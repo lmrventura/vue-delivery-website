@@ -80,27 +80,51 @@
   "burgers": [
     {
       "nome": "Luiz ",
-      "carne": "Alcatra",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Cheddar",
-        "Salame",
-        "Tomate"
-      ],
-      "status": "Finalizado",
-      "id": 1
-    },
-    {
-      "nome": "Lucas Bispo",
-      "carne": "Veggie burger",
+      "carne": "Picanha",
       "pao": "Parmesão e Orégano",
       "opcionais": [
         "Cheddar",
         "Salame",
         "Tomate"
       ],
+      "status": "Em produção",
+      "id": 1
+    },
+    {
+      "nome": "Lucas Bispo",
+      "carne": "Picanha",
+      "pao": "Integral",
+      "opcionais": [
+        "Cheddar",
+        "Salame",
+        "Tomate",
+        "Cebola roxa",
+        "Pepino"
+      ],
       "status": "Finalizado",
       "id": 2
+    },
+    {
+      "nome": "Luiz Matheus Rodrigues Ventura",
+      "carne": "Maminha",
+      "pao": "Parmesão e Orégano",
+      "opcionais": [
+        "Bacon",
+        "Cheddar",
+        "Salame"
+      ],
+      "status": "Solicitado",
+      "id": 3
+    },
+    {
+      "nome": "LUIZ MATHEUS RODRIGUES VENTURA",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado",
+      "id": 4
     }
   ]
 }

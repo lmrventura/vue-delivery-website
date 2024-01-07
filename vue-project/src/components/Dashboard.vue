@@ -1,5 +1,6 @@
 <template>
 <div id="burger-table" v-if="burgers">
+    <Message :msg="msg" v-show="msg" />
     <div>
         <div id="burger-table-heading">
             <div class="order-id">#:</div>
@@ -22,7 +23,7 @@
             </ul>
             </div>
             <div>
-            <select name="status" class="status" @change="updateBurger($burgerStatusSelected, burger.id)">
+            <select name="status" class="status" @change="updateBurger($event, burger.id)">
                 <option :value="s.tipo" v-for="s in status" :key="s.id" :selected="burger.status == s.tipo">
                 {{ s.tipo }}
                 </option>
@@ -38,14 +39,20 @@
 </template>
 
 <script>
+import Message from './Message.vue';
+
 export default {
     name: 'Dashboard',
     data() {
         return {
             burgers: null,
             burger_id: null,
-            status: []
+            status: [],
+            msg: null
         }
+    },
+    components: {
+        Message
     },
     methods: {
         async getPedidos() {
@@ -66,20 +73,27 @@ export default {
             
             const res = await req.json();
             //mensagem de pedido deletado
+            this.msg = `Pedido removido com sucesso.`;
+            console.log(this.msg)
+            setTimeout(() => this.msg = "", 3000)
 
             this.getPedidos(); //atualização do sistema
 
         },
-        async updateBurger(burgerStatusSelected, burgerId) {
-            const option = burgerStatusSelected.target.value
-            const dataJSON = JSON.stringify({ status: option})
+        async updateBurger(event, burgerId) {
+            const option = event.target.value;
+            const dataJson = JSON.stringify({ status: option});
             const req = await fetch(`http://localhost:3000/burgers/${burgerId}`, {
                 method: "PATCH",
-                headers: {"Content-Type": "application/json"},
-                body: dataJSON
+                headers: { "Content-Type": "application/json" },
+                body: dataJson
             });
 
             const res = await req.json();
+            this.msg = `O pedido N°${res.id} foi atualizado para "${res.status}"!`;
+            console.log(this.msg)
+            setTimeout(() => this.msg = "", 3000)
+
             console.log(res)
         }
     },
